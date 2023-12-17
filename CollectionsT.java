@@ -26,6 +26,29 @@ public class CollectionsT {
         System.out.println(student.get("Nayan"));
         System.out.println(student.keySet());
         // Both hasmap & hashtable works same
+
+        Employee one = new Employee(1, "nayan", "nirmal");
+        Employee two = new Employee(2, "test", "hyd");
+        Employee three = new Employee(3, "hike", "del");
+
+        HashMap<Integer, Object> maps = new HashMap<>();
+        maps.put(12, one);
+        maps.put(23, two);
+        maps.put(34, three);
+        System.out.println(maps);
+
     }
-    //comparator & comparable
+    // comparator & comparable
+}
+
+class Employee {
+    private int id;
+    private String name;
+    private String place;
+
+    Employee(int id, String name, String place) {
+        this.id = id;
+        this.name = name;
+        this.place = place;
+    }
 }
