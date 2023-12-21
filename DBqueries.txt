@@ -1,0 +1,45 @@
+USE Company;
+CREATE TABLE Employees
+(id INT AUTO_INCREMENT, name VARCHAR(20), 
+age INT NOT NULL CHECK(age>18), 
+phone VARCHAR(10) NOT NULL UNIQUE,
+city VARCHAR(20) NOT NULL DEFAULT "Hyderabad", 
+PRIMARY KEY(id));
+
+INSERT INTO Employees (name,age,phone,city) 
+VALUES("one",20,"8374984413",1),
+("two",21,"8374984414",1),
+("four",25,"8374984415",2),
+("three",21,"8374984416",3),
+("five",28,"8374984417",1);
+
+-- TRUNCATE TABLE Employees; Only records in the table will be removed
+-- DROP TABLE Employees;  Entire table will be deleted 
+
+UPDATE Employees SET city="Chennai" WHERE id=9;
+
+DELETE FROM Employees WHERE id=10;
+
+CREATE TABLE Cities (cid INT AUTO_INCREMENT, city_name VARCHAR(20), PRIMARY KEY(cid));
+
+INSERT INTO Cities (city_name) VALUES ("Hyderabad"),("Mumbai"),("Delhi");
+
+ALTER TABLE Employees MODIFY city INT;
+
+ALTER TABLE Employees ADD foreign key(city) references Cities(cid);
+
+SELECT * FROM Company.Employees;
+
+SELECT * FROM Company.Employees ORDER BY age DESC;
+
+SELECT * FROM Company.Employees WHERE (age>19 OR city="Hyderabad") AND name="testfour";
+
+SELECT * FROM Company.Employees WHERE age BETWEEN 21 AND 25;
+
+SELECT * FROM Company.Employees WHERE age NOT BETWEEN 21 AND 25;
+
+SELECT * FROM Company.Employees WHERE age IN(20,21);
+
+SELECT DISTINCT city FROM Employees;
+
+SELECT * FROM Employees INNER JOIN Cities ON Employees.city = Cities.cid;
